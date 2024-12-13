@@ -341,6 +341,12 @@ namespace FastMath
 		return (x < 0.0f) ? -t0 : t0;
 	}
 
+	//polynomial approximation for sqrt(1 - x) when x is in range [0, 1].  Useful for trigonometric identities and deriving tangnet normal z
+	float FastApproximateSqrtOneMinus(in float x)
+	{
+		return x * (x * (x * -0.897499 + 0.772493) - 0.765113) + 1.016023;
+	}
+
 }
 
 #endif  //SHADER_FAST_MATH_INC_FX

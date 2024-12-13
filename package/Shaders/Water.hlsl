@@ -472,8 +472,7 @@ float3 GetWaterNormal(PS_INPUT input, float distanceFactor, float normalsDepthFa
 		float3(((-0.5 + flowmapNormalWeighted) / (flowmapDenominator.x * flowmapDenominator.y)) *
 				   max(0.4, normalsDepthFactor),
 			0);
-	flowmapNormal.z =
-		sqrt(1 - flowmapNormal.x * flowmapNormal.x - flowmapNormal.y * flowmapNormal.y);
+	flowmapNormal.z = FastMath::FastApproximateSqrtOneMinus(dot(flowmapNormal.xy, flowmapNormal.xy));
 #			endif
 
 #			if defined(WATER_PARALLAX)

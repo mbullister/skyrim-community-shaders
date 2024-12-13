@@ -1516,6 +1516,7 @@ PS_OUTPUT main(PS_INPUT input, bool frontFace
 	uint numShadowLights = min(4, uint(NumLightNumShadowLight.y));
 
 #	if defined(TRUE_PBR) && !defined(MODELSPACENORMALS)
+	normal.z = FastMath::FastApproximateSqrtOneMinus(dot(normal.xy, normal.xy));	
 	if (!frontFace) {
 		normal.xyz *= -1;
 	}
